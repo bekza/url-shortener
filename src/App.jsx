@@ -13,7 +13,7 @@ const App = () => {
       setState([...state, inputValue]);
 
     state.includes(inputValue)
-      ? setExistingText("We have it already...")
+      ? setExistingText(`${inputValue} has been added already...`)
       : setExistingText("");
 
     setInputValue("");
@@ -22,22 +22,24 @@ const App = () => {
   return (
     <div className="App">
       <form onSubmit={handleSubmit}>
-        Enter Url:{" "}
+        <h2>Enter Url:</h2>
         <input
           type="text"
           value={inputValue}
           placeholder="https://www.apple.com/"
           onChange={(e) => setInputValue(e.target.value)}
         />
-        <button type="submit">Enter</button>
+        <button type="submit">Submit</button>
       </form>
 
       <ul>
-        <b>Shortened links will appear here:</b>
+        <i>Shortened links will appear here:</i>
+        <hr />
         {state.map((elem, index) => {
           return (
             <li key={index}>
-              <a target="_blank" rel="noreferrer" href={`${elem}`}>
+              <span>{elem}:</span> &nbsp;&nbsp;
+              <a target="_blank" rel="noreferrer" href={elem}>
                 http://localhost:3000/{index + 1}
               </a>
             </li>

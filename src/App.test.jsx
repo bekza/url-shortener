@@ -20,7 +20,7 @@ describe("App", () => {
     expect(wrapper.find("input").exists()).toBe(true);
   });
   it("renders text", () => {
-    expect(wrapper.find("b").text()).toEqual(
+    expect(wrapper.find("i").text()).toEqual(
       "Shortened links will appear here:"
     );
   });
@@ -35,6 +35,6 @@ describe("App", () => {
 
   it("renders enter button", () => {
     expect(wrapper.find("button").exists()).toBe(true);
-    expect(wrapper.find("button").text()).toEqual("Enter");
+    expect(wrapper.find("button").text()).toEqual("Submit");
   });
 });
