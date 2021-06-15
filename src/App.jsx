@@ -4,10 +4,19 @@ import "./App.css";
 const App = () => {
   const [state, setState] = useState([]);
   const [inputValue, setInputValue] = useState("");
+  const [existingText, setExistingText] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    !state.includes(inputValue) && setState([...state, inputValue]);
+    inputValue &&
+      !state.includes(inputValue) &&
+      setState([...state, inputValue]);
+
+    state.includes(inputValue)
+      ? setExistingText("We have it already...")
+      : setExistingText("");
+
+    setInputValue("");
   };
 
   return (
@@ -17,6 +26,7 @@ const App = () => {
         <input
           type="text"
           value={inputValue}
+          placeholder="https://www.apple.com/"
           onChange={(e) => setInputValue(e.target.value)}
         />
         <button type="submit">Enter</button>
@@ -34,6 +44,8 @@ const App = () => {
           );
         })}
       </ul>
+
+      <small>{existingText}</small>
     </div>
   );
 };
